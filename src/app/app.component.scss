@@ -1,0 +1,58 @@
+// variables
+
+$colors: (
+    dark-mode-elem:hsl(209, 23%, 22%),
+   dark-bg: hsl(207, 26%, 17%),
+    light-mode-Text: hsl(200, 15%, 8%),
+    light-mode-Input: hsl(0, 0%, 52%),
+    light-bg : hsl(0, 0%, 98%),
+    dark-Text: hsl(0, 0%, 100%)
+);
+
+$fs: "Nunito Sans";
+$w1: 300;
+$w2: 600;
+$w3: 800;
+
+
+
+// function
+
+@function getColor($clr-name){
+    @return map-get($colors, $clr-name)
+}
+
+
+main {
+    background-color: getColor(dark-bg);
+//    height: 100vh;
+   color: getColor(dark-Text);
+   font-family: $fs;
+
+   .top{
+       background:getColor(dark-mode-elem);
+       box-shadow: 2px 6px 10px getColor(light-mode-Text);
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       padding: 0 10px;
+
+       button{
+           background: getColor(dark-mode-elem);
+           padding: 10px;
+           color: getColor(dark-Text);
+           border: none;
+           display: flex;
+           align-items: center;
+           cursor: pointer;
+
+           svg{
+               margin-right: 5px;
+           }
+           h3{
+               margin: 0;
+
+           }
+       }
+   }
+}

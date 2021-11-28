@@ -1,0 +1,60 @@
+<!-- <p>{{countryList?.topLevelDomain}}</p> -->
+
+<!-- <p>{{countryList?.subregion}}</p> -->
+
+<!-- <p>{{countryList?.nativeName}}</p> -->
+<!-- <p *ngFor="let currency of countryList?.currencies">{{currency.code}} | {{currency.symbol}}</p> -->
+<!-- <p *ngFor="let lang of countryList?.languages">{{lang.name}}</p> -->
+<!-- <p *ngFor="let border of countryList?.borders">{{border}}</p> -->
+
+<!-- <p>{{countryList.name}}</p> -->
+
+<div class="container">
+  <div class="form-section">
+    <input
+      type="text"
+      [(ngModel)]="countryName"
+      placeholder="Search for a country"
+    />
+    <p> Searching for: {{countryName}}</p>
+    <div class="select">
+      <button (click)="showRegion()">
+        <p>{{regionName}}</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#FFFFFF"
+        >
+          <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+          <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+        </svg>
+      </button>
+      <ul *ngIf="isShowRegion">
+        <li  (click) = 'setRegionName("Africa")'>Africa</li>
+        <li  (click) = 'setRegionName("America")'>America</li>
+        <li (click) = 'setRegionName("Asia")'>Asia</li>
+        <li  (click) = 'setRegionName("Europe")'>Europe</li>
+        <li  (click) = 'setRegionName("Oceania")'>Oceania</li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="country-list">
+    <div class="loading" *ngIf="!countryList">
+      <div class="loading-icon">
+         
+      </div>
+    </div>
+    <li *ngFor="let country of countryList" class="card">
+      <img [src]="country?.flags?.svg" alt="{{ country?.name }} flag" />
+      <div class="card-body">
+        <h2>{{ country?.name }}</h2>
+        <p>Population: {{ country?.population }}</p>
+        <p>Region:{{ country?.region }}</p>
+        <p>Capital:{{ country?.capital }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

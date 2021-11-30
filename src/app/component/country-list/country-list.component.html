@@ -16,10 +16,10 @@
       [(ngModel)]="countryName"
       placeholder="Search for a country"
     />
-    <p> Searching for: {{countryName}}</p>
+    <p>Searching for: {{ countryName }}</p>
     <div class="select">
       <button (click)="showRegion()">
-        <p>{{regionName}}</p>
+        <p>{{ regionName }}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -32,20 +32,18 @@
         </svg>
       </button>
       <ul *ngIf="isShowRegion">
-        <li  (click) = 'setRegionName("Africa")'>Africa</li>
-        <li  (click) = 'setRegionName("America")'>America</li>
-        <li (click) = 'setRegionName("Asia")'>Asia</li>
-        <li  (click) = 'setRegionName("Europe")'>Europe</li>
-        <li  (click) = 'setRegionName("Oceania")'>Oceania</li>
+        <li><button (click)="setRegionName('Africa')">Africa</button></li>
+        <li><button (click)="setRegionName('America')">America</button></li>
+        <li><button (click)="setRegionName('Asia')">Asia</button></li>
+        <li><button (click)="setRegionName('Europe')">Europe</button></li>
+        <li><button (click)="setRegionName('Oceania')">Oceania</button></li>
       </ul>
     </div>
   </div>
 
   <ul class="country-list">
     <div class="loading" *ngIf="!countryList">
-      <div class="loading-icon">
-         
-      </div>
+      <div class="loading-icon"></div>
     </div>
     <li *ngFor="let country of countryList" class="card">
       <img [src]="country?.flags?.svg" alt="{{ country?.name }} flag" />

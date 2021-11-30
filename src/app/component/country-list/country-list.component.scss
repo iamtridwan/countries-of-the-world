@@ -60,18 +60,18 @@ $desktop: 768px;
 
       li {
         list-style: none;
-        font-size: 16px;
-        padding:10px;
-        padding-left: 5px;
-        cursor: pointer;
-      
-      }
-       li:hover {
-          color: hsl(209, 23%, 22%);
-          background-color:hsl(0, 0%, 100%);
-        }
 
-     
+        button {
+          font-size: 16px;
+          padding: 15px;
+          cursor: pointer;
+         
+        }
+      }
+      button:hover {
+        background-color: $dark-Text;
+          color: $color;
+      }
     }
   }
 }
@@ -112,36 +112,36 @@ $desktop: 768px;
   }
 
   .card {
-  list-style: none;
-  width: 100%;
-  margin: 15px auto;
-  background: $color;
-  border-radius: 12px;
-  color: $dark-Text;
-  padding-bottom: 10px;
-
-  img {
+    list-style: none;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-  }
-  .card-body {
-    margin: 10px 0;
-    padding: 0 10px;
+    margin: 15px auto;
+    background: $color;
+    border-radius: 12px;
+    color: $dark-Text;
+    padding-bottom: 10px;
 
-    h2 {
-      margin-bottom: 15px;
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
     }
-    p {
-      margin: 2px 0;
+    .card-body {
+      margin: 10px 0;
+      padding: 0 10px;
+
+      h2 {
+        margin-bottom: 15px;
+      }
+      p {
+        margin: 2px 0;
+      }
     }
   }
-}
 
-.card:hover {
-  background-color: lighten($color, 10%);
-}
+  .card:hover {
+    background-color: lighten($color, 10%);
+  }
 
   @include desktop {
     display: grid;
@@ -151,8 +151,6 @@ $desktop: 768px;
     width: 100%;
   }
 }
-
-
 
 input {
   background: $color url("../../../assets/search_white_24dp.svg") no-repeat 3%;

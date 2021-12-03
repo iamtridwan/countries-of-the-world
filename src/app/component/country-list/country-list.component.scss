@@ -20,11 +20,23 @@ $desktop: 768px;
 .form-section {
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+@include desktop{
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
   .select {
-    width: 25%;
+    width: 95%;
     position: relative;
+    margin-top: 30px;
+    
+
+    @include desktop{
+      width: 25%;
+      margin-top: 0;
+    }
 
     button {
       width: 100%;
@@ -73,6 +85,8 @@ $desktop: 768px;
           color: $color;
       }
     }
+
+    
   }
 }
 

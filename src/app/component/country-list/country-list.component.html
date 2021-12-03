@@ -44,7 +44,7 @@
     <div class="loading" *ngIf="filteredCountry.length === 0">
       <div class="loading-icon"></div>
     </div>
-    <li *ngFor="let country of filteredCountry" class="card">
+    <li *ngFor="let country of filteredCountry" class="card" (click) = 'onclick()'>
       <img [src]="country?.flags?.svg" alt="{{ country?.name }} flag" />
       <div class="card-body">
         <h2>{{ country?.name }}</h2>

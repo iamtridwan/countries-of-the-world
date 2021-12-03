@@ -155,6 +155,7 @@ $desktop: 768px;
 
   .card:hover {
     background-color: lighten($color, 10%);
+    cursor: pointer;
   }
 
   @include desktop {

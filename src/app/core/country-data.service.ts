@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class CountryDataService {
   _countriesUrl: string =
     'https://restcountries.com/v2/all?fields=flags,name,population,topLevelDomain,subregion,region,capital,currencies,languages,borders,nativeName ';
-  _countryUrl: string = 'https://restcountries.com/v2/name/';
-  _region: string = 'https://restcountries.com/v2/region/{region}';
+  _countryUrl: string = 'https://restcountries.com/v2/name';
+
 
   constructor(private _http: HttpClient) {}
   // All countries data
@@ -20,12 +20,9 @@ export class CountryDataService {
 
   // single country data
 
-  getCountry(name: string) {
-    return this._http.get(`${this._countryUrl}/${name}`);
+  getCountry(name: string):Observable<CountryInterface[]> {
+    return this._http.get<CountryInterface[]>(name);
   }
 
-  // get countries based on region
-  getCountryRegion(region: string) {
-    return this._http.get(`${this._region}/${region}`);
-  }
+  
 }

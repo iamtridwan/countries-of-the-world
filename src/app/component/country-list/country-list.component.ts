@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { CountryDataService } from 'src/app/core/country-data.service';
 import { CountryInterface } from 'src/app/modules/country-interface';
+import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
 // import { map } from 'rxjs/operators'
@@ -36,7 +37,7 @@ export class CountryListComponent implements OnInit, OnChanges {
   }
 
   isShowRegion: boolean = false;
-  constructor(private _countryService: CountryDataService, private router: Router) {}
+  constructor(private _countryService: CountryDataService, private router: Router, private activeRoute: ActivatedRoute) {}
 
   // perform initial set up value for all country data
   ngOnInit(): void {
@@ -74,9 +75,9 @@ export class CountryListComponent implements OnInit, OnChanges {
     return this.countryList!.filter((country: CountryInterface) => country.name.toLocaleLowerCase().includes(sortBy))
   }
 
-  onclick(){
-    console.log('clicked')
-   this.router.navigate(['/country'])
+  onclick(name: string){
+  this.activeRoute.snapshot.paramMap.get(name)
+   this.router.navigate(['/countries', name])
   }
   
 }

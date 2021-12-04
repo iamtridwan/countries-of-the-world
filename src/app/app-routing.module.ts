@@ -5,8 +5,9 @@ import { CountryListComponent } from './component/country-list/country-list.comp
 
 const routes: Routes = [
   { path: 'countries', component: CountryListComponent },
-  { path: 'country', component: CountryDetailComponent },
+  { path: 'countries/:name', component: CountryDetailComponent },
   { path: '', component: CountryListComponent },
+  {path: '**', redirectTo: 'countries', pathMatch: "full"}
 ];
 
 @NgModule({

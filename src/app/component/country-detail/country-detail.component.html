@@ -1,43 +1,48 @@
-<div class="btn">
-  <button routerLink="/countries">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      enable-background="new 0 0 24 24"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="#000000"
-    >
-      <rect fill="none" height="24" width="24" />
-      <path d="M9,19l1.41-1.41L5.83,13H22V11H5.83l4.59-4.59L9,5l-7,7L9,19z" />
-    </svg>
-    Back
-  </button>
-</div>
-
-<div class="country-container">
-  <div class="flag">
-    <img src="" alt="" />
+<div class="section-detail">
+  <div class="btn">
+    <button routerLink="/countries">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 24 24"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="#FFFFFF"
+      >
+        <rect fill="none" height="24" width="24" />
+        <path d="M9,19l1.41-1.41L5.83,13H22V11H5.83l4.59-4.59L9,5l-7,7L9,19z" />
+      </svg>
+      Back
+    </button>
   </div>
-  <div class="country-info">
-    <h1 class="title">Belgium</h1>
-    <div class="body">
-      <p>Native Name: Belgie</p>
-      <p>Top Level Domain: .be</p>
-      <p>Currencies: Euro</p>
-      <p>languages: Dutch, French, German</p>
-      <p>Population: 11,319,511</p>
-      <p>Region: Europe</p>
-      <p>Sub Region: Western Europe</p>
-      <p>Capital: Brussels</p>
-    </div>
 
-    <div class="foot">
-      <p>Border Countries:</p>
-      <div class="foot-btn">
-        <button>France</button>
-        <button>Germany</button>
-        <button>Netherlands</button>
+  <div class="country-container" *ngFor="let item of country">
+    <div class="flag">
+    
+      <img [src]="item?.flags?.svg" alt="{{ item?.name }} flag" />
+    </div>
+    <div class="country-info">
+      <h1 class="title">{{ item?.name }}</h1>
+      <div class="body">
+        <div class="left-col">
+          <p>Native Name: <span> {{item?.nativeName}} </span></p>
+          <p>Population: <span> {{ item?.population }} </span></p>
+          <p>Region: <span>{{ item?.region }} </span></p>
+          <p>Sub Region: <span>{{item?.subregion}}</span></p>
+          <p>Capital: <span>{{ item?.capital }}</span></p>
+        </div>
+        <div class="right-col">
+          <p>Top Level Domain: <span>{{item?.topLevelDomain}}</span></p>
+          <p>Currencies: <span *ngFor="let currency of item?.currencies"> {{currency.name}} </span></p>
+          <p>languages: <span *ngFor="let lang of item?.languages">{{lang.name}}, </span></p>
+        </div>
+      </div>
+
+      <div class="foot">
+        <p>Border Countries:</p>
+        <div class="foot-btn" >
+         <button *ngFor="let border of borders">{{border}}</button>
+        </div>
       </div>
     </div>
   </div>

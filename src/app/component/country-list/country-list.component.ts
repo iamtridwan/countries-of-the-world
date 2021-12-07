@@ -48,7 +48,7 @@ export class CountryListComponent implements OnInit, OnChanges {
         this.filteredCountry = this.countryList
       
       },
-      ((err: CountryError ) => this.errorMessage =`ERROR: ${err.friendlyMessage}`)
+      ((err: CountryError ) => this.errorMessage = err.friendlyMessage)
     );
 
   }

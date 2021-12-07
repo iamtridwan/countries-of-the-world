@@ -166,9 +166,12 @@ $desktop: 768px;
     transform: scale(1.03);
   }
 
-  p{
+  #error{
     font-size: 18px;
     text-align: center;
+    span{
+      color: Red;
+    }
   }
 
 

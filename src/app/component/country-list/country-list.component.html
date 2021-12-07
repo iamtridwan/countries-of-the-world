@@ -31,10 +31,10 @@
   </div>
 
   <ul class="country-list">
-    <div class="loading" *ngIf="filteredCountry.length === 0 || !errorMessage">
+    <div class="loading" *ngIf="filteredCountry.length === 0 && !errorMessage">
       <div class="loading-icon"></div>
     </div>
-    <p *ngIf="errorMessage">{{errorMessage}}</p>
+    <p *ngIf="errorMessage" id="error"><span>ERROR:</span> {{errorMessage}}!</p>
     <li *ngFor="let country of filteredCountry" class="card" (click) = 'onclick(country!.name)'>
       <img [src]="country?.flags?.svg" alt="{{ country?.name }} flag" />
       <div class="card-body">

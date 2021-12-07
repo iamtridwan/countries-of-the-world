@@ -20,7 +20,9 @@ export class CountryDataService {
    }
 
   constructor(private _http: HttpClient) {}
-  // All countries data
+
+
+  // All countries data with error hhndling
   getAllCountry(): Observable<CountryInterface[] | CountryError> {
     return this._http.get<CountryInterface[]>(this._countriesUrl)
     .pipe(
@@ -38,7 +40,7 @@ export class CountryDataService {
  }
 
 
-  // single country data
+  // single country data with error handling
 
   getCountry(name: string):Observable<CountryInterface[] | CountryError> {
     return this._http.get<CountryInterface[]>(name)

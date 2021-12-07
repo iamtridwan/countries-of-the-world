@@ -4,6 +4,7 @@ import { CountryInterface } from 'src/app/modules/country-interface';
 import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
+import { CountryError } from 'src/app/modules/country-error';
 // import { map } from 'rxjs/operators'
 @Component({
   selector: 'wc-country-list',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class CountryListComponent implements OnInit, OnChanges {
   countryList?: CountryInterface[] = [];
   filteredCountry: CountryInterface[] = []
-  
+  errorMessage: string = ''
   private _countryName: string = '';
 
   get countryName(): string {
@@ -43,11 +44,11 @@ export class CountryListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this._countryService.getAllCountry().subscribe(
       (res) => {
-        this.countryList = res;
+        this.countryList = <CountryInterface[]>res;
         this.filteredCountry = this.countryList
       
       },
-      (err) => console.log(err)
+      ((err: CountryError ) => this.errorMessage =`ERROR: ${err.friendlyMessage}`)
     );
 
   }

@@ -3,6 +3,7 @@ import { CountryDataService } from 'src/app/core/country-data.service';
 import { CountryInterface } from 'src/app/modules/country-interface';
 import { ActivatedRoute } from '@angular/router';
 
+import { CountryError } from 'src/app/modules/country-error';
 
 @Component({
  
@@ -13,6 +14,7 @@ export class CountryDetailComponent implements OnInit {
 
   country?: CountryInterface[];
   borders: any;
+  errorMessage: string = '';
  
 
   constructor( private _countryService: CountryDataService, private route: ActivatedRoute) { }
@@ -22,16 +24,14 @@ export class CountryDetailComponent implements OnInit {
 let url = `${this._countryService._countryUrl}/${name}?fields=flags,name,population,topLevelDomain,subregion,region,capital,currencies,languages,borders,nativeName`;
 this._countryService.getCountry(url).subscribe(
  res => {
-   this.country = res;
+   this.country = <CountryInterface[]>res;
    this.borders = this.country[0].borders.slice(0, 3)
-   console.log(this.borders)
+  
 
 
   },
 
-  err => console.log(err)
-
-)    
+  ((err: CountryError) => this.errorMessage = err.friendlyMessage))    
   }
 
 }

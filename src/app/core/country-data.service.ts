@@ -11,7 +11,7 @@ import { CountryError } from '../modules/country-error';
 export class CountryDataService {
   _countriesUrl: string =
     'https://restcountries.com/v2/all?fields=flags,name,population,topLevelDomain,subregion,region,capital,currencies,languages,borders,nativeName ';
-  _countryUrl: string = 'https://restcountries.com/v2/name';
+  
 
  countryError : CountryError = {
      errorNumber: 0,
@@ -22,7 +22,7 @@ export class CountryDataService {
   constructor(private _http: HttpClient) {}
 
 
-  // All countries data with error hhndling
+  // All countries data with error handling
   getAllCountry(): Observable<CountryInterface[] | CountryError> {
     return this._http.get<CountryInterface[]>(this._countriesUrl)
     .pipe(

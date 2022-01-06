@@ -50,6 +50,8 @@ export class CountryListComponent implements OnInit, OnChanges {
       },
       ((err: CountryError ) => this.errorMessage = err.friendlyMessage)
     );
+    // setting and reading query parameters
+    // this.countryName = this.activeRoute.snapshot.queryParamMap.get('filterBy') || "";
 
   }
 
@@ -78,7 +80,8 @@ export class CountryListComponent implements OnInit, OnChanges {
 
   onclick(name: string){
   this.activeRoute.snapshot.paramMap.get(name)
-   this.router.navigate(['/countries', name])
+   this.router.navigate(['/countries', name]);
+  //  , { queryParams: {filterBy: this.countryName} }
   }
   
 }
